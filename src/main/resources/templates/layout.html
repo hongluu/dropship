@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="_csrf" th:attr="content=${_csrf.token}"/>
+    <!-- default header name is X-CSRF-TOKEN -->
+
+    <link th:href="@{/theme/css/minified/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/theme/css/minified/core.min.css}" rel="stylesheet"/>
+    <link th:href="@{/theme/css/minified/components.min.css}" rel="stylesheet"/>
+    <link th:href="@{/theme/css/minified/colors.min.css}" rel="stylesheet"/>
+    <link th:href="@{/theme/css/icons/icomoon/styles.css}" rel="stylesheet"/>
+
+    <!-- Core JS files -->
+    <script type="text/javascript" th:src="@{/theme/js/plugins/loaders/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/theme/js/core/libraries/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/theme/js/core/libraries/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/theme/js/plugins/loaders/blockui.min.js}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" th:src="@{/theme/js/core/app.js}"></script>
+    <!-- /theme JS files -->
+</head>
+<body>
+
+<div th:fragment="header" class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><p style="color: white;font-size:16px;"> DROP SHIP</p></a>
+
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+                <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-user">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        <span th:text="${#authentication.principal.fullName}" />
+                        <i class="caret"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+                        <li><a href="#"><i class="icon-coins"></i> My balance</a></li>
+                        <li><a href="#"><span class="badge badge-warning pull-right">58</span> <i
+                                class="icon-comment-discussion"></i> Messages</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+                        <li><a th:href="@{/logout}"><i class="icon-switch2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+</div>
+
+<!--side bar-->
+<div th:fragment="sidebar" class="navbar navbar-default">
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#"><i class="icon-display4 position-left"></i> Dashboard</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog3"></i>
+                    <span class="visible-xs-inline-block position-right">Share</span>
+                    <!--<span class="caret"></span>-->
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
