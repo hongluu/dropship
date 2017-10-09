@@ -11,4 +11,6 @@ public class DebugController extends BaseController {
     public String search(){
         return "/pages/search_product";
     }
+
+
 }
