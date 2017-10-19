@@ -9,8 +9,17 @@
 <div id="main_content" >
     <div class="container">
         <p>Code hear ...</p>
+        <button class="btn">Test Crawler</button>
     </div>
 </div>
+<script>
+    $('button').click(function(){
+      $.ajax({url: "/crawl/test", success: function(result){
+        debugger;
+      }});
+    })
+
+</script>
 <footer th:replace="layout :: footer"></footer>
 </body>
 </html>
