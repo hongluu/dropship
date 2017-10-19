@@ -2,11 +2,13 @@ package com.shimoon.webcrawler.business.impl.services;
 
 import com.shimoon.webcrawler.crawler.config.ForumCrawlerConfig;
 import com.shimoon.webcrawler.crawler.controller.CrawlerControllerFactory;
+import com.shimoon.webcrawler.persitent.repository.ForumPostRepository;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CrawlerService {
+  @Autowired
+  private ForumPostRepository forumPostRepository;
 
   public void crawl(ForumCrawlerConfig fcConfig) throws Exception {
     String crawlStorageFolder = "/data/crawl/root";
@@ -27,7 +31,7 @@ public class CrawlerService {
     PageFetcher pageFetcher = new PageFetcher(config);
     RobotstxtConfig robotstxtConfig = new RobotstxtConfig();
     RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
-    CrawlerControllerFactory factory = new CrawlerControllerFactory(fcConfig, null);
+    CrawlerControllerFactory factory = new CrawlerControllerFactory(fcConfig, forumPostRepository);
     CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer);
 
         /*
@@ -35,14 +39,16 @@ public class CrawlerService {
          * URLs that are fetched and then the crawler starts following links
          * which are found in these pages
          */
-    controller.addSeed("http://www.ics.uci.edu/~lopes/");
-    controller.addSeed("http://www.ics.uci.edu/~welling/");
-    controller.addSeed("http://www.ics.uci.edu/");
+    for (String url : fcConfig.getOriginUrls()) {
+      controller.addSeed(url);
+    }
+
+
 
         /*
          * Start the crawl. This is a blocking operation, meaning that your code
          * will reach the line after this only when crawling is finished.
          */
-    controller.start(factory,fcConfig.getNumThread());
+    controller.start(factory, fcConfig.getNumThread());
   }
 }

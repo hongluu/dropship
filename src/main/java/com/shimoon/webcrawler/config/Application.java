@@ -18,8 +18,8 @@ import java.util.Locale;
  */
 @Configuration
 public class Application extends WebMvcConfigurerAdapter {
-    @Value("${dropship.lang}")
-    public String defaultLang;
+
+    public String defaultLang="ja";
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();
