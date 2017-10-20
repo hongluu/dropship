@@ -12,123 +12,42 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /**
  * The persistent class for the user_login database table.
  */
-@Entity
-@Table(name = "forum_post")
+
+@Document(collection = "forum_post")
 public class ForumPost implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "forum_id")
-    private int forum_id;
+    @Getter(AccessLevel.PUBLIC) @Setter private int forum_id;
 
     @Column(name = "createdAt")
-    private Timestamp createdAt;
+    @Getter(AccessLevel.PUBLIC) @Setter private Timestamp createdAt;
 
-    private Timestamp updatedAt;
+    @Getter(AccessLevel.PUBLIC) @Setter private Timestamp updatedAt;
 
-    private String url;
+    @Getter(AccessLevel.PUBLIC) @Setter private String url;
 
-    private String source;
+    @Getter(AccessLevel.PUBLIC) @Setter private String source;
 
-    private String userName;
+    @Getter(AccessLevel.PUBLIC) @Setter private String userName;
 
-    private String userType;
+    @Getter(AccessLevel.PUBLIC) @Setter private String userType;
 
-    private String title;
+    @Getter(AccessLevel.PUBLIC) @Setter  private String title;
 
-    private String content;
+    @Getter(AccessLevel.PUBLIC) @Setter private String content;
 
-    private String strPostedAt;
+    @Getter(AccessLevel.PUBLIC) @Setter private String strPostedAt;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
-    public int getForum_id() {
-        return forum_id;
-    }
-
-    public void setForum_id(int forum_id) {
-        this.forum_id = forum_id;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Timestamp getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Timestamp updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getStrPostedAt() {
-        return strPostedAt;
-    }
-
-    public void setStrPostedAt(String strPostedAt) {
-        this.strPostedAt = strPostedAt;
-    }
 
 
 

@@ -19,7 +19,7 @@ import java.util.Locale;
 @Configuration
 public class Application extends WebMvcConfigurerAdapter {
 
-    public String defaultLang="ja";
+    public String defaultLang="en";
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver slr = new SessionLocaleResolver();

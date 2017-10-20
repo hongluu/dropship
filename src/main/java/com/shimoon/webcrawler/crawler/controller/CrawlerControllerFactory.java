@@ -13,9 +13,9 @@ import org.springframework.data.repository.Repository;
 public class CrawlerControllerFactory implements CrawlController.WebCrawlerFactory {
 
   private ForumCrawlerConfig fcConfig;
-  private Repository repository;
+  private JpaRepository repository;
 
-  public CrawlerControllerFactory(ForumCrawlerConfig fcConfig,Repository repository) {
+  public CrawlerControllerFactory(ForumCrawlerConfig fcConfig,JpaRepository repository) {
     this.fcConfig = fcConfig;
     this.repository = repository;
   }

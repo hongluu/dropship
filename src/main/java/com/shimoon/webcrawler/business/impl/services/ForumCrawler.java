@@ -28,7 +28,9 @@ public class ForumCrawler extends WebCrawler {
   private JpaRepository repository;
 
   public ForumCrawler(ForumCrawlerConfig fcConfig,
-      Repository repository) {
+                      JpaRepository repository) {
+    this.fcConfig =fcConfig;
+    this.repository = repository;
   }
 
   @Override
@@ -59,12 +61,11 @@ public class ForumCrawler extends WebCrawler {
     if (urlsMatch(fcConfig.getFilterEndUrls(),url)) {
       if (page.getParseData() instanceof HtmlParseData) {
         ForumSelector forumSelector = fcConfig.getForumSelector();
-
         HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();
         Document doc = Jsoup.parse(htmlParseData.getHtml());
         String title = doc.select(forumSelector.getTitleEl()).text();
-        Elements postEls = doc.select(forumSelector.getPostEl());
 
+        Elements postEls = doc.select(forumSelector.getPostEl());
         postEls.forEach(el -> {
           ForumPost forumPost = new ForumPost();
           forumPost.setUrl(url);
@@ -81,7 +82,6 @@ public class ForumCrawler extends WebCrawler {
 
         });
       }
-
     }
 
   }
