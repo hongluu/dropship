@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/resources/**","/theme/**", "/css/**", "/js/**", "/img/**", "/security-policy", "/role-use", "/error","/rest/**","/encode-password","/debug/**").permitAll().anyRequest()
 
         .authenticated().and().authorizeRequests().antMatchers("/api/**").authenticated()
-        .and().formLogin().loginPage("/login").defaultSuccessUrl("/dashboard", true).permitAll().and()
+        .and().formLogin().loginPage("/login").defaultSuccessUrl("/forum/list", true).permitAll().and()
         .logout().permitAll();
   }
 

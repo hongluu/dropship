@@ -28,6 +28,11 @@ public class HomeController extends BaseController {
         return "/pages/dashboard";
     }
 
+    @GetMapping("/")
+    public String defaultPage(Locale locale, Model model) {
+        return "redirect:/forum/list";
+    }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

@@ -1,0 +1,15 @@
+.form-group span.description{
+    display: block;
+    font-size: 11px;
+    color:grey;
+    margin-left:10px;
+}
+.text-600{
+    font-weight: 600;
+}
+.text-500{
+    font-weight: 500;
+}
+.icon-arrow-left52{
+    cursor: pointer;
+}

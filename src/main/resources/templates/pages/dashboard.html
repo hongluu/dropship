@@ -6,20 +6,32 @@
 <title>Blank Page</title>
 <body>
 <header th:replace="layout :: header"></header>
-<div id="main_content" >
-    <div class="container">
-        <p>Code hear ...</p>
-        <button class="btn">Test Crawler</button>
+
+<!--Page content-->
+<div class="container">
+    <!--Page header-->
+    <div class="page-header-content">
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+    <div class="page-title">
+        <h4><i class="icon-arrow-left52 position-left"></i>
+            <span class="text-semibold">Dash board</span></h4>
+    </div>
+
+
+    <!--Breadcrumb-->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Dash board</li>
+        </ul>
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    </div>
+
+    <!--Page content-->
+    <div class="page-content">
+
     </div>
 </div>
-<script>
-    $('button').click(function(){
-      $.ajax({url: "/crawl/test", success: function(result){
-        debugger;
-      }});
-    })
-
-</script>
 <footer th:replace="layout :: footer"></footer>
 </body>
 </html>

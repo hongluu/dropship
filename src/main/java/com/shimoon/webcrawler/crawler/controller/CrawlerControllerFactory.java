@@ -1,21 +1,21 @@
 package com.shimoon.webcrawler.crawler.controller;
 
 import com.shimoon.webcrawler.business.impl.services.ForumCrawler;
-import com.shimoon.webcrawler.crawler.config.ForumCrawlerConfig;
+import com.shimoon.webcrawler.persitent.entities.ForumConfig;
+import com.shimoon.webcrawler.web.entities.ForumConfVO;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * Created by HongLM on 10/19/17.
  */
 public class CrawlerControllerFactory implements CrawlController.WebCrawlerFactory {
 
-  private ForumCrawlerConfig fcConfig;
-  private JpaRepository repository;
+  private ForumConfVO fcConfig;
+  private MongoRepository repository;
 
-  public CrawlerControllerFactory(ForumCrawlerConfig fcConfig,JpaRepository repository) {
+  public CrawlerControllerFactory(ForumConfVO fcConfig, MongoRepository repository) {
     this.fcConfig = fcConfig;
     this.repository = repository;
   }

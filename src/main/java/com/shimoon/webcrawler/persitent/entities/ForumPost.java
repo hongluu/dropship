@@ -25,10 +25,8 @@ public class ForumPost implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "forum_id")
     @Getter(AccessLevel.PUBLIC) @Setter private int forum_id;
 
-    @Column(name = "createdAt")
     @Getter(AccessLevel.PUBLIC) @Setter private Timestamp createdAt;
 
     @Getter(AccessLevel.PUBLIC) @Setter private Timestamp updatedAt;

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head th:replace="layout :: head"></head>
+<title>Blank Page</title>
+<body>
+<header th:replace="layout :: header"></header>
+
+<!--Page content-->
+<div class="container">
+    <!--Page header-->
+    <div class="page-header-content">
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+    <div class="page-title">
+        <h4><i class="icon-arrow-left52 position-left"></i>
+            <span class="text-semibold">Create a new forum</span></h4>
+    </div>
+
+
+    <!--Breadcrumb-->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Forum config</li>
+        </ul>
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    </div>
+
+    <!--Page content-->
+    <div class="page-content">
+        <div class="content-wrapper">
+            <div class="panel panel-flat col-lg-12" style="margin-top:10px;width: 100%">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+
+                    <!--main form-->
+                    <form class="form-horizontal" th:object="${forumConfig}" th:method="post" th:action="@{/forum/add}">
+                        <fieldset class="content-group">
+                            <!--forum info-->
+                            <legend class="text-box text-600"> Forum info</legend>
+                            <input type="hidden" class="form-control" th:field="*{id}"/>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Tên forum</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{forum_name}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Link gốc</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{origin_link}"/>
+                                    <span class="help-block">Vd: http://kenhsinhvien.vn/</span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2"> Số luồng crawl</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{num_thread}"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Dạng link sẽ viếng thăm</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{should_visit_prefix_links}"/>
+                                    <span class="help-block">Hệ thống sẽ duyệt những link có cấu trúc bắt đầu bằng "link_xxx", mỗi link ngăn cách nhau bởi dấu ",". Vd: http://kenhsinhvien.vn/forum,http://kenhsinhvien.vn/topic</span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Danh sách link không viếng thăm</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{ignore_links}"/>
+                                </div>
+                                <span class="help-block">Hệ thống sẽ bỏ qua những link bên dưới. Giưã mỗi link được ngăn cách với nhau bởi dấu "," . Vd: http://kenhsinhvien.vn/forum,http://kenhsinhvien.vn/topic</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Danh sách các từ khoá không lấy dữ liệu</label>
+
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{ignore_keywords}"/>
+                                    <span class="help-block">Hệ thống sẽ không lưu dư liệu nếu nôi dung có những từ khoá "xxx". Giữa các từ khoá ngăn cách nhau bởi dấu "," . Vd: "bán Iphone,bán macos</span>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Tổng số bài dự kiến </label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{total_post}"/>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset class="content-group">
+                            <!--forum selector-->
+                            <legend class="text-box text-600"> Forum selector</legend>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Title selector</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{title_selector}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Post selector</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" th:field="*{post_selector}"/>
+                                </div>
+                            </div>
+
+                            <fieldset class="content-group" style="margin-left:20px">
+                                <legend class="text-box text-500"> Bên trong nội dung 1 bài post</legend>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Comment selector</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" th:field="*{comment_selector}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">Posted at selector</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" th:field="*{postedat_selector}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">User name selector</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" th:field="*{username_selector}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2">User type selector</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" th:field="*{usertype_selector}"/>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </fieldset>
+
+                        <div class="content-group">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

@@ -95,7 +95,7 @@
     <dependency>
       <groupId>edu.uci.ics</groupId>
       <artifactId>crawler4j</artifactId>
-      <version>4.4-SNAPSHOT</version>
+      <version>4.3</version>
     </dependency>
 
     <dependency>
@@ -142,7 +142,7 @@
               <source>
                 <directory>${project.basedir}/src/main/resources/sass</directory>
               </source>
-              <destination>${project.basedir}/src/main/resources/static/css</destination>
+              <destination>${project.basedir}/src/main/resources/static/my</destination>
             </resource>
           </resources>
         </configuration>

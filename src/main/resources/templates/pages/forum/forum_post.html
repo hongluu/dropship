@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head th:replace="layout :: head"></head>
+<title>Blank Page</title>
+<body>
+<header th:replace="layout :: header"></header>
+
+<!--Page content-->
+<div class="container">
+    <!--Page header-->
+    <div class="page-header-content">
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+    <div class="page-title">
+        <h4><i class="icon-arrow-left52 position-left"></i>
+            <span class="text-semibold">Top created posts - </span> <a th:text="${forum.forumName}"></a></h4>
+    </div>
+
+
+    <!--Breadcrumb-->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active">Data</li>
+        </ul>
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    </div>
+
+    <!--Page content-->
+    <div class="page-content">
+        <h4>
+            Chủ đề: <span class="text-500" th:text="${forum.postTitle}"></span>
+        </h4>
+        <h4>
+            Số bài đã crawl được: <span class="text-500" th:text="${forum.numOfCompletedPost}"></span>
+        </h4>
+        <div class="panel panel-flat col-lg-12 timeline-content" style="margin-top:10px;width: 100%"
+             th:each="post : ${forum.forumPosts}">
+            <div class="panel-heading">
+                <a class="" th:text="${post.url}" th:href="${post.url}"></a>
+                <div>
+                    <span class="heading-text" th:text="${post.strPostedAt}"></span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <h6 class="content-group">
+
+                    <p>User Name: <span th:text="${post.userName}"></span></p>
+                    <p> User Type: <span th:text="${post.userType}"></span></p>
+                </h6>
+                <blockquote th:text="${post.content}">
+
+                </blockquote>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
