@@ -5,6 +5,8 @@ import com.shimoon.webcrawler.crawler.config.ForumCrawlerConfig;
 import com.shimoon.webcrawler.crawler.config.ForumSelector;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import com.shimoon.webcrawler.web.controller.ContextBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -46,6 +48,16 @@ public class CrawlerController {
 //    }
 //    return "";
 //  }
+  @Autowired
+  ContextBean contextBean;
+  @GetMapping("test")
+  public String test(){
+    return contextBean.getCrawlerRunning("voz").getFrontier().getNumberOfProcessedPages()+ "";
+  }
 
+  @GetMapping("/forum/num-of-completed-post")
+  public String getNumOfCompletedPost(){
+    return contextBean.getCrawlerRunning("voz").getFrontier().getNumberOfProcessedPages()+ "";
+  }
 
 }

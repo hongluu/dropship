@@ -37,8 +37,6 @@
                             <th>Stt</th>
                             <th>Forum url</th>
                             <th>Status</th>
-                            <th>Total post</th>
-                            <th>Completed posts</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -51,19 +49,18 @@
                                     <span th:if="${forum.status==0}" class="label label-default"> Not running </span>
                                     <span th:if="${forum.status==1}" class="label label-success"> Running </span>
                                 </td>
-                                <td th:text="${forum.total_post}"></td>
-                                <td th:text="${forum.total_post}"></td>
-                                <td>
-                                    <a th:href="@{/forum/edit(id=${forum.id})}">Edit</a>
+                                <td >
+                                    <a th:if="${forum.status==0}" th:href="@{/forum/edit(id=${forum.id})}">Edit</a>
                                 </td>
                                 <td>
                                     <a th:href="@{/forum/view-data(source=${forum.source})}">View Data</a>
                                 </td>
-                                <td>
-                                    <a th:href="@{/forum/crawl(id=${forum.id})}" th:if="${forum.status==0}"><button class="btn btn-success">Start crawl</button></a>
-                                    <a data-toggle="tooltip" title="Dừng crawl và xoá các dữ liệu liên quan"
+                                <td class="function">
+                                    <a data-toggle="tooltip" title="Start crawler" class="block-ui-btn"
+                                            th:href="@{/forum/crawl(id=${forum.id})}" th:if="${forum.status==0}"><i class="icon-play3"></i></a>
+                                    <a data-toggle="tooltip" title="Dừng crawl và xoá các dữ liệu liên quan" class="block-ui-btn"
                                        th:href="@{/forum/stop-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i class="icon-stop"></i></a>
-                                    <a data-toggle="tooltip" title="Dừng crawl"
+                                    <a data-toggle="tooltip" title="Dừng crawl" class="block-ui-btn"
                                        th:href="@{/forum/pause-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i class="icon-pause"></i></a>
                                 </td>
 

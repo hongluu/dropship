@@ -13,3 +13,7 @@
 .icon-arrow-left52{
     cursor: pointer;
 }
+.function a{
+    cursor: pointer;
+    color: grey;
+}

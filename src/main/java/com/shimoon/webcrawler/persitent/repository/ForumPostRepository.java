@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ForumPostRepository extends MongoRepository<ForumPost, Serializable> {
     void removeAllBySource(String source);
-    int countAllBy();
+    int countAllBySource(String source);
 
-    List<ForumPost> findTop30BySourceOrderByUpdatedAt(String source);
+    List<ForumPost> findTop30BySourceOrderByUpdatedDateDesc(String source);
 }

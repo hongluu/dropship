@@ -19,5 +19,5 @@ public interface ForumService {
 
     List<ForumPost> getForumpostBy(String source);
 
-    int getNumOfAllPost();
+    int getNumOfAllPost(String source);
 }

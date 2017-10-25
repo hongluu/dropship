@@ -1,6 +1,7 @@
 package com.shimoon.webcrawler.persitent.entities;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,9 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.joda.time.DateTime;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -20,16 +24,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 @Document(collection = "forum_post")
-public class ForumPost implements Serializable {
+public class ForumPost implements Serializable  {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter(AccessLevel.PUBLIC) @Setter private int forum_id;
-
-    @Getter(AccessLevel.PUBLIC) @Setter private Timestamp createdAt;
-
-    @Getter(AccessLevel.PUBLIC) @Setter private Timestamp updatedAt;
 
     @Getter(AccessLevel.PUBLIC) @Setter private String url;
 
@@ -44,6 +44,11 @@ public class ForumPost implements Serializable {
     @Getter(AccessLevel.PUBLIC) @Setter private String content;
 
     @Getter(AccessLevel.PUBLIC) @Setter private String strPostedAt;
+
+    @UpdateTimestamp
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Getter(AccessLevel.PUBLIC) @Setter
+    private DateTime updatedDate;
 
 
 

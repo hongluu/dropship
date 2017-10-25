@@ -64,12 +64,12 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public List<ForumPost> getForumpostBy(String source) {
-        return forumpostRepository.findTop30BySourceOrderByUpdatedAt(source);
+        return forumpostRepository.findTop30BySourceOrderByUpdatedDateDesc(source);
     }
 
     @Override
-    public int getNumOfAllPost() {
-        return forumpostRepository.countAllBy();
+    public int getNumOfAllPost(String source) {
+        return forumpostRepository.countAllBySource(source);
     }
 
 

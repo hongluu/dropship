@@ -31,7 +31,24 @@
             $('[data-toggle="tooltip"]').tooltip();
             $('.icon-arrow-left52').click(function(){
                 window.history.back();
-            })
+            });
+
+            $('.block-ui-btn').on('click', function() {
+                var block = $('body');
+                $(block).block({
+                    message: '<i class="icon-spinner4 spinner"></i>',
+                    overlayCSS: {
+                        backgroundColor: '#fff',
+                        opacity: 0.8,
+                        cursor: 'wait'
+                    },
+                    css: {
+                        border: 0,
+                        padding: 0,
+                        backgroundColor: 'transparent'
+                    }
+                });
+            });
         })
     </script>
     <!-- /theme JS files -->
@@ -54,8 +71,8 @@
                     <i class="icon-dots position-left"></i> Forums <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a th:href="@{/forum/add}"><i class="fa fa-cogs"></i> Add new config</a></li>
-                    <li><a th:href="@{/forum/list}"><i class="icon-chrome"></i> List forum</a></li>
+                    <li><a th:href="@{/forum/add}"><i class="icon-cog3"></i> Add new config</a></li>
+                    <li><a th:href="@{/forum/list}"><i class="icon-list-unordered"></i> List forum</a></li>
                 </ul>
             </li>
         </ul>

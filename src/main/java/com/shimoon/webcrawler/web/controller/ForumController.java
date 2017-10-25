@@ -57,7 +57,7 @@ public class ForumController extends BaseController {
     }
 
     @GetMapping("/forum/crawl")
-    public String crawlForum(Locale locale, Model model, @RequestParam("id") int id) {
+    public String crawlForum(Locale locale, Model model, @RequestParam("id") int id) throws InterruptedException {
         ForumConfVO forumConfig = forumService.getForumByIdAndUpdateStatus(id, ForumConfVO.RUNNING);
         try {
             ServiceResult serviceResult = crawlerService.crawl(forumConfig);
@@ -71,7 +71,7 @@ public class ForumController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        Thread.sleep(5000);
         return "redirect:/forum/list";
 
     }
@@ -96,7 +96,7 @@ public class ForumController extends BaseController {
         ForumVO forumVO = new ForumVO();
         forumVO.setForumName(source);
 
-        forumVO.setNumOfCompletedPost(forumService.getNumOfAllPost());
+        forumVO.setNumOfCompletedPost(forumService.getNumOfAllPost(source));
         forumVO.setForumPosts(forumService.getForumpostBy(source));
         if (forumVO.getForumPosts() != null && forumVO.getForumPosts().size()>0)
             forumVO.setPostTitle(forumVO.getForumPosts().get(0).getTitle());
