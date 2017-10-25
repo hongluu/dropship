@@ -34,37 +34,51 @@
                 <div class="panel-heading">
                     <table class="table">
                         <thead>
-                            <th>Stt</th>
-                            <th>Forum url</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                        <th>Stt</th>
+                        <th>Forum url</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                         </thead>
                         <tbody>
-                            <tr th:each="forum,stat : ${forumConfigList}">
-                                <td th:text="${stat.index+1}"></td>
-                                <td th:text="${forum.origin_link}"></td>
-                                <td >
-                                    <span th:if="${forum.status==0}" class="label label-default"> Not running </span>
-                                    <span th:if="${forum.status==1}" class="label label-success"> Running </span>
-                                </td>
-                                <td >
-                                    <a th:if="${forum.status==0}" th:href="@{/forum/edit(id=${forum.id})}">Edit</a>
-                                </td>
-                                <td>
-                                    <a th:href="@{/forum/view-data(source=${forum.source})}">View Data</a>
-                                </td>
-                                <td class="function">
-                                    <a data-toggle="tooltip" title="Start crawler" class="block-ui-btn"
-                                            th:href="@{/forum/crawl(id=${forum.id})}" th:if="${forum.status==0}"><i class="icon-play3"></i></a>
-                                    <a data-toggle="tooltip" title="Dừng crawl và xoá các dữ liệu liên quan" class="block-ui-btn"
-                                       th:href="@{/forum/stop-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i class="icon-stop"></i></a>
-                                    <a data-toggle="tooltip" title="Dừng crawl" class="block-ui-btn"
-                                       th:href="@{/forum/pause-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i class="icon-pause"></i></a>
-                                </td>
+                        <tr th:each="forum,stat : ${forumConfigList}">
+                            <td th:text="${stat.index+1}"></td>
+                            <td th:text="${forum.origin_link}"></td>
+                            <td>
+                                <span th:if="${forum.status==0}" class="label label-default"> Not running </span>
+                                <span th:if="${forum.status==1}" class="label label-success"> Running </span>
+                            </td>
+                            <td>
+                                <div class="pace-demo" style="padding:0 0 0 5px; width: 67px">
+                                    <div class="theme_radar theme_radar_with_text">
+                                        <div class="pace_progress" data-progress-text="60%" data-progress="60"></div>
+                                        <div class="pace_activity"></div>
+                                        <span style="margin-left:33px ">60%</span></div>
+                                </div>
+                            </td>
+                            <td>
+                                <a th:if="${forum.status==0}" th:href="@{/forum/edit(id=${forum.id})}">Edit</a>
+                            </td>
 
-                            </tr>
+                            <td>
+                                <a th:href="@{/forum/view-data(source=${forum.source})}">View Data</a>
+                            </td>
+                            <td class="function">
+                                <a data-toggle="tooltip" title="Start crawler" class="block-ui-btn"
+                                   th:href="@{/forum/crawl(id=${forum.id})}" th:if="${forum.status==0}"><i
+                                        class="icon-play3"></i></a>
+                                <a data-toggle="tooltip" title="Dừng crawl và xoá các dữ liệu liên quan"
+                                   class="block-ui-btn"
+                                   th:href="@{/forum/stop-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i
+                                        class="icon-stop"></i></a>
+                                <a data-toggle="tooltip" title="Dừng crawl" class="block-ui-btn"
+                                   th:href="@{/forum/pause-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i
+                                        class="icon-pause"></i></a>
+                            </td>
+
+                        </tr>
                         </tbody>
 
                     </table>
