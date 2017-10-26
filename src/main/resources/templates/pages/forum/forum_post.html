@@ -30,7 +30,7 @@
     <!--Page content-->
     <div class="page-content">
         <h4>
-            Chủ đề: <span class="text-500" th:text="${forum.postTitle}"></span>
+             <span class="text-500" >Top 100 bài đăng mới được crawl </span>
         </h4>
         <h4>
             Số bài đã crawl được: <span class="text-500" th:text="${forum.numOfCompletedPost}"></span>
@@ -42,6 +42,11 @@
                 <div>
                     <span> Ngày tạo:</span>
                     <span class="heading-text text-500" th:text="${post.strPostedAt}"></span>
+
+                </div>
+                <div>
+                    <span> Chủ đề:</span>
+                    <span class="heading-text text-500" th:text="${post.title}"></span>
                 </div>
             </div>
             <div class="panel-body">

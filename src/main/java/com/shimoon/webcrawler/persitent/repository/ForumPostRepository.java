@@ -14,5 +14,5 @@ public interface ForumPostRepository extends MongoRepository<ForumPost, Serializ
     void removeAllBySource(String source);
     int countAllBySource(String source);
 
-    List<ForumPost> findTop30BySourceOrderByUpdatedDateDesc(String source);
+    List<ForumPost> findTop100BySourceOrderByUpdatedDateDesc(String source);
 }

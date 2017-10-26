@@ -64,7 +64,7 @@ public class ForumServiceImpl implements ForumService {
 
     @Override
     public List<ForumPost> getForumpostBy(String source) {
-        return forumpostRepository.findTop30BySourceOrderByUpdatedDateDesc(source);
+        return forumpostRepository.findTop100BySourceOrderByUpdatedDateDesc(source);
     }
 
     @Override
