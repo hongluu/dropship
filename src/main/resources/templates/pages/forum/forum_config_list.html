@@ -37,7 +37,7 @@
                         <th>Stt</th>
                         <th>Forum url</th>
                         <th>Status</th>
-                        <th>Progress</th>
+                        <th>Completed Post</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -50,13 +50,13 @@
                                 <span th:if="${forum.status==0}" class="label label-default"> Not running </span>
                                 <span th:if="${forum.status==1}" class="label label-success"> Running </span>
                             </td>
-                            <td>
-                                <div class="pace-demo" style="padding:0 0 0 5px; width: 67px">
-                                    <div class="theme_radar theme_radar_with_text">
-                                        <div class="pace_progress" data-progress-text="60%" data-progress="60"></div>
-                                        <div class="pace_activity"></div>
-                                        <span style="margin-left:33px ">60%</span></div>
-                                </div>
+                            <td th:id="${forum.id}" class="text-500">
+                                <!--<div class="pace-demo" style="padding:0 0 0 5px; width: 67px">-->
+                                    <!--<div class="theme_radar theme_radar_with_text">-->
+                                        <!--<div class="pace_progress" data-progress-text="60%" data-progress="60"></div>-->
+                                        <!--<div class="pace_activity"></div>-->
+                                        <!--<span style="margin-left:33px ">60%</span></div>-->
+                                <!--</div>-->
                             </td>
                             <td>
                                 <a th:if="${forum.status==0}" th:href="@{/forum/edit(id=${forum.id})}">Edit</a>
@@ -77,6 +77,16 @@
                                    th:href="@{/forum/pause-crawl(source=${forum.source})}" th:if="${forum.status==1}"><i
                                         class="icon-pause"></i></a>
                             </td>
+                            <script th:inline="javascript">
+                                function updateTotalCompletedLink(){
+                                    var source = [[${forum.source}]];
+                                    var id = [[${forum.id}]];
+                                    $.get( "/forum/num-of-completed-post?source="+source, function( data ) {
+
+                                        $('#'+id).html(data);
+                                    });                                }
+                                updateTotalCompletedLink();
+                            </script>
 
                         </tr>
                         </tbody>

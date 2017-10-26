@@ -19,8 +19,17 @@ import org.springframework.stereotype.Component;
 @EnableAsync
 public class CrawlerMonitor implements ApplicationListener<CrawlerEvent> {
 
+    /**
+     * COnTEXT BEAN
+     */
+
+    private final ContextBean contextBean;
+
     @Autowired
-    private ContextBean contextBean;
+    public CrawlerMonitor(ContextBean contextBean) {
+        this.contextBean = contextBean;
+    }
+
     @Override
     @Async
     public void onApplicationEvent(CrawlerEvent crawlerEvent) {
@@ -48,9 +57,12 @@ public class CrawlerMonitor implements ApplicationListener<CrawlerEvent> {
             e.printStackTrace();
         }
 
-        controller.addSeed(forumConfig.getOrigin_link());
+        if (controller != null) {
+            controller.addSeed(forumConfig.getOrigin_link());
+            contextBean.addToMapCrawlerRunning(source,controller);
+            controller.start(factory,forumConfig.getNum_thread());
+        }
 
-        contextBean.addToMapCrawlerRunning(source,controller);
-        controller.start(factory,forumConfig.getNum_thread());
+
     }
 }

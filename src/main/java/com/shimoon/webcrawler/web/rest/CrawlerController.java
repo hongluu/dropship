@@ -1,15 +1,11 @@
 package com.shimoon.webcrawler.web.rest;
 
+import com.shimoon.webcrawler.business.entities.ForumService;
 import com.shimoon.webcrawler.business.impl.services.CrawlerService;
-import com.shimoon.webcrawler.crawler.config.ForumCrawlerConfig;
-import com.shimoon.webcrawler.crawler.config.ForumSelector;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-import com.shimoon.webcrawler.web.controller.ContextBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,46 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CrawlerController {
 
-  @Autowired
-  private CrawlerService crawlerService;
 
-//  @GetMapping("crawl/test")
-//  public String testCrawl() {
-//    ForumCrawlerConfig fcConfig = new ForumCrawlerConfig();
-//    ForumSelector forumSelector = new ForumSelector();
-//    forumSelector.setCommentEl(".messageContent article");
-//    forumSelector.setPostedAtEl(".privateControls span.DateTime");
-//    forumSelector.setPostEl("#messageList li");
-//    forumSelector.setTitleEl(".titleBar>h1>a");
-//    forumSelector.setUserNameEl(".userText span");
-//    forumSelector.setUserTypeEl(".userTitle");
-//
-//    fcConfig.setForumSelector(forumSelector);
-//    fcConfig.setSource("kenh_sinh_vien");
-//    fcConfig.setNumThread(5);
-//    fcConfig.setOriginUrls(new ArrayList<>(Arrays.asList("http://kenhsinhvien.vn/forum")));
-//    fcConfig.setFilterUrlShouldVisitPrefixList(new ArrayList<>(
-//        Arrays.asList("http://kenhsinhvien.vn/forum", "http://kenhsinhvien.vn/topic/")));
-//    fcConfig.setFilterEndUrls(new ArrayList<>(
-//        Arrays.asList("http://kenhsinhvien.vn/topic/")));
-//
-//    try {
-//      crawlerService.crawl(fcConfig);
-//    } catch (Exception e) {
-//      e.printStackTrace();
-//    }
-//    return "";
-//  }
+  private final CrawlerService crawlerService;
+  private final ForumService forumService;
+
+
   @Autowired
-  ContextBean contextBean;
-  @GetMapping("test")
-  public String test(){
-    return contextBean.getCrawlerRunning("voz").getFrontier().getNumberOfProcessedPages()+ "";
+  public CrawlerController(CrawlerService crawlerService, ForumService forumService) {
+    this.crawlerService = crawlerService;
+    this.forumService = forumService;
   }
 
+
   @GetMapping("/forum/num-of-completed-post")
-  public String getNumOfCompletedPost(){
-    return contextBean.getCrawlerRunning("voz").getFrontier().getNumberOfProcessedPages()+ "";
+  public int getNumOfCompletedPost(@RequestParam("source")String source){
+    return forumService.getNumOfAllPost(source);
   }
 
 }
