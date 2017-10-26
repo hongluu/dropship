@@ -82,7 +82,7 @@ public class ForumCrawler extends WebCrawler {
           forumPost.setContent(el.select(commentEl).text());
           forumPost.setUpdatedDate( new DateTime(System.currentTimeMillis()));
           forumPost.setStrPostedAt(el.select(fcConfig.getPostedat_selector()).text());
-          if (forumPost.getContent() != null && isValid(title,forumPost.getContent(),fcConfig.getIgnoreKeywords())) {
+          if (org.apache.commons.lang3.StringUtils.isNotEmpty(forumPost.getUserName()) && forumPost.getUserName()!=null &&forumPost.getContent() != null && isValid(title,forumPost.getContent(),fcConfig.getIgnoreKeywords())) {
             this.repository.save(forumPost);
           }
         }
