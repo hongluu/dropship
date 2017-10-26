@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head th:replace="layout :: head"></head>
+<title>Blank Page</title>
+<body>
+<header th:replace="layout :: header"></header>
+
+<!--Page content-->
+<div class="container">
+	<!--Page header-->
+	<div class="page-header-content">
+		<a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+	<div class="page-title">
+		<h4><i class="icon-arrow-left52 position-left"></i>
+			<span class="text-semibold">List of Category</span></h4>
+	</div>
+
+
+	<!--Breadcrumb-->
+	<div class="breadcrumb-line">
+		<ul class="breadcrumb">
+			<li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
+			<li class="active">List of Category</li>
+		</ul>
+		<a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+	</div>
+
+	<!--Page content-->
+	<div class="page-content">
+		<a th:href="@{/category/amazon/update}"><button class="btn btn-success"> Update Amazon categories </button></a>
+
+	</div>
+</div>
+<footer th:replace="layout :: footer"></footer>
+</body>
+</html>

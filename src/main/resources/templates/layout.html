@@ -57,7 +57,7 @@
 
 <div th:fragment="header" class="navbar navbar-inverse bg-teal">
     <div class="navbar-header">
-        <a class="navbar-brand" th:href="@{/}"><p style="color: white;font-size:16px;"> WEB CRAWLER</p></a>
+        <a class="navbar-brand" th:href="@{/}"><p style="color: white;font-size:16px;"> TOOLS</p></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -66,13 +66,19 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
-            <li class="dropdown">
+            <li >
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i class="icon-dots position-left"></i> Forums <span class="caret"></span>
+                    <i class="icon-search4"></i> Search
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a th:href="@{/category/list}">
+                    <i class="icon-cog"></i> Categories
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a th:href="@{/forum/add}"><i class="icon-cog3"></i> Add new config</a></li>
-                    <li><a th:href="@{/forum/list}"><i class="icon-list-unordered"></i> List forum</a></li>
+                    <li><a th:href="@{/forum/add}"><i class="icon-cog3"></i> Amazon</a></li>
                 </ul>
             </li>
         </ul>

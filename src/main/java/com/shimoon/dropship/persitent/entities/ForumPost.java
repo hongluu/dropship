@@ -1,0 +1,53 @@
+package com.shimoon.dropship.persitent.entities;
+
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.joda.time.DateTime;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
+/**
+ * The persistent class for the user_login database table.
+ */
+
+@Document(collection = "forum_post")
+public class ForumPost implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter(AccessLevel.PUBLIC) @Setter private int forum_id;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String url;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String source;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String userName;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String userType;
+
+    @Getter(AccessLevel.PUBLIC) @Setter  private String title;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String content;
+
+    @Getter(AccessLevel.PUBLIC) @Setter private String strPostedAt;
+
+    @UpdateTimestamp
+    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Getter(AccessLevel.PUBLIC) @Setter
+    private DateTime updatedDate;
+
+
+
+
+
+
+}
