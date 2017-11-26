@@ -20,6 +20,7 @@ $(function() {
         autoWidth: false,
         columnDefs: [{ 
             orderable: false,
+            defaultContent: "-",
             width: '100px',
             targets: [ 5 ]
         }],

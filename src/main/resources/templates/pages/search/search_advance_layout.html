@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+
+<div th:fragment="content">
+    <div class=" form-group">
+        <label class="display-block text-semibold"></label>
+        <a class="link-radio"> <label class="radio-inline radio-left">
+            <div class="choice">
+                <span></span>
+                <input type="radio" name="store_radio" class="styled" checked="checked" value="all"/>
+            </div>
+            All
+        </label></a>
+        <a class="link-radio" th:href="@{/search(search_type=amazon)}">
+            <label class="radio-inline radio-left">
+                <div class="choice">
+                    <span></span>
+                    <input type="radio" name="store_radio" class="styled" value="amazon.com"/>
+                </div>
+                Amazon
+            </label>
+        </a>
+        <a class="link-radio" th:href="@{/search(search_type=ebay)}">
+            <label class="radio-inline radio-left">
+                <div class="choice">
+                    <span></span>
+                    <input type="radio" name="store_radio" class="styled" value="ebay.com"/>
+                </div>
+                Ebay
+            </label>
+        </a>
+        <a class="link-radio" th:href="@{/search(search_type=alibaba)}">
+            <label class="radio-inline radio-left">
+                <div class="choice">
+                    <span></span>
+                    <input type="radio" name="store_radio" class="styled" value="alibaba.com"/>
+                </div>
+                Alibaba
+            </label>
+        </a>
+        <a class="link-radio" th:href="@{/search(search_type=taobao)}">
+            <label class="radio-inline radio-left">
+                <div class="choice">
+                    <span></span>
+                    <input type="radio" name="store_radio" class="styled" value="taobao.com"/>
+                </div>
+                Taobao
+            </label></a>
+        <a class="link-radio" th:href="@{/search(search_type=rakute)}">
+            <label class="radio-inline radio-left">
+                <div class="choice">
+                    <span></span>
+                    <input type="radio" name="store_radio" class="styled" value="rakute.com"/>
+                </div>
+                Rakute
+            </label></a>
+    </div>
+    <div id="advance_detail">
+        <div id="markets"/>
+        <div id="categories"/>
+    </div>
+
+    <script>
+        var searchProduct = new SearchProduct();
+
+        $(".styled").uniform({radioClass: 'choice'});
+        $('.link-radio').click(function () {
+            searchProduct.showAdvance();
+
+        })
+    </script>
+</div>
+
+</body>
+</html>

@@ -1,19 +1,43 @@
-.form-group span.description{
+.form-group span.description {
     display: block;
     font-size: 11px;
-    color:grey;
-    margin-left:10px;
+    color: grey;
+    margin-left: 10px;
 }
-.text-600{
+
+.text-600 {
     font-weight: 600;
 }
-.text-500{
+
+.text-500 {
     font-weight: 500;
 }
-.icon-arrow-left52{
+
+.icon-arrow-left52 {
     cursor: pointer;
 }
-.function a{
+
+.function a {
     cursor: pointer;
     color: grey;
+}
+
+a.link-radio {
+    color: #708a96;
+    margin-right: 30px
+}
+.typeahead__field{
+    font-size: 13px;
+}
+.typeahead__result{
+    font-size: 13px;
+}
+.typeahead__result strong{
+    color: darkred;
+}
+label{
+    margin-bottom: 0px;
+}
+.typeahead__list>li.typeahead__item{
+    border: none;
 }

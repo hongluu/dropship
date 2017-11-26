@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+
+<div th:fragment="search_all">
+    <div class="tabbable" >
+        <ul class="nav nav-tabs nav-tabs-top">
+            <li class="active"><a href="#allstore_tab" data-toggle="tab" aria-expanded="true">All</a></li>
+            <li class=""><a href="#amazon-tab" data-toggle="tab" aria-expanded="false">Amazon</a></li>
+            <li class=""><a href="#ebay-tab" data-toggle="tab" aria-expanded="false">Ebay</a></li>
+            <li class=""><a href="#alibaba-tab" data-toggle="tab" aria-expanded="false">Alibaba</a></li>
+            <li class=""><a href="#taobao-tab" data-toggle="tab" aria-expanded="false">Taobao</a></li>
+            <li class=""><a href="#rakute-tab" data-toggle="tab" aria-expanded="false">Rakute</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="allstore_tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+
+            <div class="tab-pane" id="amazon-tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+            <div class="tab-pane" id="ebay-tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+            <div class="tab-pane" id="alibaba-tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+            <div class="tab-pane" id="taobao-tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+            <div class="tab-pane" id="rakute-tab">
+                <table th:replace="/pages/search/table_result::content"></table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

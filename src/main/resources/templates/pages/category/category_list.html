@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head th:replace="layout :: head"></head>
 <title>Blank Page</title>
 <body>
 <header th:replace="layout :: header"></header>
-
+<script th:src="@{/theme/js/plugins/tables/datatables/datatables.min.js}"/>
+<script th:src="@{/theme/js/plugins/forms/selects/select2.min.js}"/>
+<script th:src="@{/theme/js/pages/datatables_advanced.js}"/>
 <!--Page content-->
 <div class="container">
-	<!--Page header-->
-	<div class="page-header-content">
-		<a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
-	<div class="page-title">
-		<h4><i class="icon-arrow-left52 position-left"></i>
-			<span class="text-semibold">List of Category</span></h4>
-	</div>
+    <!--Page header-->
+    <div class="page-header-content">
+        <a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+    <div class="page-title">
+        <h4><i class="icon-arrow-left52 position-left"></i>
+            <span class="text-semibold">List of Category</span></h4>
+    </div>
 
 
-	<!--Breadcrumb-->
-	<div class="breadcrumb-line">
-		<ul class="breadcrumb">
-			<li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
-			<li class="active">List of Category</li>
-		</ul>
-		<a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
-	</div>
+    <!--Breadcrumb-->
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a th:href="@{/}"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li class="active" th:text="#{info.category.list}"></li>
+        </ul>
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+    </div>
 
-	<!--Page content-->
-	<div class="page-content">
-		<a th:href="@{/category/amazon/update}"><button class="btn btn-success"> Update Amazon categories </button></a>
+    <!--Page content-->
+    <div class="page-content">
 
-	</div>
+        <div class="content">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <a th:href="@{/category/amazon/update}">
+                        <button class="btn btn-success"> Update Amazon categories</button>
+                    </a>
+                    <a th:href="@{/category/amazon/update}">
+                        <button class="btn btn-success"> Update Amazon categories</button>
+                    </a>
+                    <a th:href="@{/category/amazon/update}">
+                        <button class="btn btn-success"> Update Amazon categories</button>
+                    </a>
+                    <a th:href="@{/category/amazon/update}">
+                        <button class="btn btn-success"> Update Amazon categories</button>
+                    </a>
+                </div>
+
+                <table class="table table-bordered table-hover datatable-highlight">
+                    <thead>
+                    <tr>
+                        <th class="text-center hidden-md-down" th:text="#{common.number_no}"></th>
+                        <th class="text-center" th:text="#{info.category.name}">Name</th>
+                        <th class="text-center" th:text="#{info.cateogry.code}">Code</th>
+                        <th class="text-center hidden-1024-down" th:text="#{common.parent_code}"></th>
+                        <th class="text-center hidden-1024-down" th:text="#{common.source}">Source</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category,stat: ${allCategories}">
+                        <td th:text="${stat.index+1}"></td>
+                        <td><span th:text="${category.name}"></span></td>
+                        <td><span th:text="${category.code}"></span></td>
+                        <td>
+                            <span th:text="${category.parent_code}"></span>
+                        </td>
+                        <td><span th:text="${category.source}"></span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
 </div>
 <footer th:replace="layout :: footer"></footer>
 </body>

@@ -131,7 +131,7 @@ $(function() {
                 maxlength: 10
             },
             minimum_number: {
-                min: 10
+                min: 0
             },
             maximum_number: {
                 max: 10

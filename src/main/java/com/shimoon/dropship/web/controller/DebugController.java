@@ -7,8 +7,5 @@ import org.springframework.web.context.annotation.SessionScope;
 @Controller
 @SessionScope
 public class DebugController extends BaseController {
-    @GetMapping("/debug/search")
-    public String search(){
-        return "/pages/search_product";
-    }
+
 }

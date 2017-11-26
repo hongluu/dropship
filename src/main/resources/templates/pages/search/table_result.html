@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+
+<div th:fragment="content">
+    <table class="table table-bordered table-hover datatable-highlight">
+        <thead>
+        <tr>
+            <th class="text-center hidden-1024-down" th:text="#{common.pictures}">Source</th>
+            <th class="text-center hidden-md-down" th:text="#{common.name}"></th>
+            <th class="text-center" th:text="#{common.description}">Name</th>
+            <th class="text-center" th:text="#{common.status}">Code</th>
+            <th class="text-center hidden-1024-down" th:text="#{common.prices}"></th>
+        </tr>
+        </thead>
+        <tbody class="tbody_result">
+
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

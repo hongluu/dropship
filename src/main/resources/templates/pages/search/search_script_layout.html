@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+
+<div th:fragment="handlebar_script">
+
+       <!--tr result template-->
+       <script type="text/x-handlebars-template" id="tr_result">
+        {{#each}}
+        <tr>
+            <td class="pictures"><span ></span></td>
+            <td class="name"><span class="pictures"></span></td>
+            <td class="status"><span class="pictures"></span></td>
+            <td><span class="pictures"></span></td>
+            <td><span class="pictures"></span></td>
+        </tr>
+        {{/each}}
+       </script>
+
+       <!--Market selectbox template-->
+       <script id="market_template" type="text/x-handlebars-template">
+              {{#if marketplaces}}
+              <div class="form-group">
+                     <label th:text="#{info.marketplace}"></label>
+                     <select name="select" class="form-control">
+                            {{#each marketplaces}}
+                            <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                     </select>
+              </div>
+              {{/if}}
+       </script>
+
+       <!--category type ahead template-->
+       <div style="display: none" id="cate_template">
+              <div class="form-group">
+                     <label th:text="#{info.categories}"></label>
+                     <div class="typeahead__container">
+                            <div class="typeahead__field">
+                                   <input class="category_input form-control" name="country_v2[query]" type="search"
+                                          placeholder="Search" autocomplete="off"/>
+                            </div>
+                     </div>
+              </div>
+       </div>
+</div>
+
+</body>
+</html>
